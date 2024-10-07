@@ -29,7 +29,7 @@ public class UserService {
         throw new Exception("Usuário não encontrado");
     }
 
-    public void insertUser(User user) {
+    public void saveUser(User user) {
         userRepository.save(user);
     }
 
