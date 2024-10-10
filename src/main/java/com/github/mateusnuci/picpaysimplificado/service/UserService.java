@@ -2,11 +2,14 @@ package com.github.mateusnuci.picpaysimplificado.service;
 
 import com.github.mateusnuci.picpaysimplificado.domain.user.User;
 import com.github.mateusnuci.picpaysimplificado.domain.user.UserType;
+import com.github.mateusnuci.picpaysimplificado.dto.UserDTO;
 import com.github.mateusnuci.picpaysimplificado.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 
 import java.math.BigDecimal;
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -34,4 +37,13 @@ public class UserService {
     }
 
 
+    public User createUser(UserDTO userDTO) {
+        User newUser = new User(userDTO);
+        this.saveUser(newUser);
+        return newUser;
+    }
+
+    public List<User> findAll() {
+        return this.userRepository.findAll();
+    }
 }
